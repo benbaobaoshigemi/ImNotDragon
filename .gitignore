@@ -1,0 +1,22 @@
+# Build outputs
+**/build/
+**/.gradle/
+**/.cxx/
+**/local.properties
+
+# Temporary & workspace verification directories
+_verification_scripts/
+scratch/
+work/
+analysis/
+outputs/im-not-dragon-workspace/evidence/
+outputs/im-not-dragon-workspace/references/
+
+# IDE & OS files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+*.pcap
+*.log

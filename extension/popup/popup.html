@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I’m not dragon</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <form id="settings">
+    <main>
+      <header>
+        <div class="brand-line"><h1>I’m not dragon</h1><span class="version">v1.1.1</span></div>
+        <div class="header-bottom"><p>浏览器环境与网络隐私</p><label class="master"><span id="master-label">加载中</span><input type="checkbox" id="enabled" aria-label="启用扩展" disabled><span class="switch"></span></label></div>
+      </header>
+
+      <section aria-labelledby="core-heading">
+        <h2 id="core-heading">核心防护</h2>
+        <div class="panel core">
+          <div><h3>WebRTC 防泄漏</h3><p>限制不经过代理的 UDP 连接</p></div>
+          <span id="core-status" class="badge">读取中</span>
+        </div>
+        <p id="core-detail" class="section-note">读取浏览器实际策略。</p>
+      </section>
+
+      <section aria-labelledby="environment-heading">
+        <h2 id="environment-heading">环境伪装</h2>
+        <div class="panel settings-list">
+          <label class="setting-row"><span><strong>时区与语言</strong><small>IANA 时区对齐 · en-US 语言环境</small></span><input type="checkbox" id="enableTimezoneLocale" disabled><span class="switch"></span></label>
+          <label class="setting-row"><span><strong>虚拟地理定位</strong><small>使用出口近似坐标 · 精度约 5 公里</small></span><input type="checkbox" id="enableLocationSpoof" disabled><span class="switch"></span></label>
+          <label class="setting-row"><span><strong>浏览器特征降噪</strong><small>精简 UA 版本与机型信息</small></span><input type="checkbox" id="enableUaReduction" disabled><span class="switch"></span></label>
+          <label class="setting-row"><span><strong>浏览器代理接管</strong><small>为浏览器指定 HTTP 或 SOCKS5 代理</small></span><input type="checkbox" id="enableProxyOverride" disabled><span class="switch"></span></label>
+        </div>
+      </section>
+
+      <section aria-labelledby="node-heading">
+        <div class="section-heading"><h2 id="node-heading">节点参数</h2><button id="sync" class="sync-button" type="button" disabled><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 6a5 5 0 0 0-8.6-2.7L2.5 5M3 10a5 5 0 0 0 8.6 2.7l1.9-1.7M2.5 1.5V5H6m7.5 9v-3.5H10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>同步当前出口</span></button></div>
+        <div class="panel node-panel">
+          <div class="exit-line"><span id="exit-ip">尚未同步出口</span><span id="exit-region">—</span></div>
+          <div id="proxy-field" hidden><label class="field">代理地址<input id="proxy" type="text" placeholder="http://127.0.0.1:7890" spellcheck="false" disabled></label><p class="field-note">不接管时沿用现有系统、VPN 或浏览器代理。</p></div>
+          <label class="field">时区（IANA）<input id="timezone" list="timezones" placeholder="America/Los_Angeles" required spellcheck="false" disabled></label>
+          <datalist id="timezones"><option value="America/Los_Angeles"><option value="America/New_York"><option value="Asia/Tokyo"><option value="Europe/London"><option value="Asia/Singapore"><option value="Europe/Berlin"><option value="Australia/Sydney"><option value="America/Toronto"></datalist>
+          <div class="coordinates"><label class="field">纬度<input id="latitude" type="number" min="-90" max="90" step="any" required disabled></label><label class="field">经度<input id="longitude" type="number" min="-180" max="180" step="any" required disabled></label></div>
+          <label class="auto-row"><input id="autoSync" type="checkbox" disabled><span>每 5 分钟同步出口</span><time id="last-sync"></time></label>
+        </div>
+      </section>
+      <details class="scope"><summary>功能范围</summary><p>适用于支持这些扩展 API 的 Chromium 浏览器。页面环境设置需刷新网页完整应用；网页最早脚本及 Worker 可能读取原始环境。全局 IPv6、DNS 与系统网络路由由 VPN 或代理软件管理。</p></details>
+    </main>
+    <footer>
+      <div class="actions"><a href="https://browserleaks.com/webrtc" target="_blank" rel="noopener noreferrer">检测防泄漏 <span aria-hidden="true">↗</span></a><button id="save" type="submit" disabled>保存配置</button></div>
+      <p id="message" role="status" aria-live="polite">正在读取配置…</p>
+    </footer>
+  </form>
+  <script src="../profile.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

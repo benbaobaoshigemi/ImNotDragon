@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="scope">
+        <item>mark.via</item>
+        <item>com.android.chrome</item>
+        <item>com.anthropic.claude</item>
+    </string-array>
+</resources>

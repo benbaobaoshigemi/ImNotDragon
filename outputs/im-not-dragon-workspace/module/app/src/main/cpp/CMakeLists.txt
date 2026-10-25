@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(dragon_network LANGUAGES CXX)
+add_library(dragon_network SHARED network.cpp)
+target_compile_features(dragon_network PRIVATE cxx_std_17)
+target_compile_options(dragon_network PRIVATE -Wall -Wextra -fvisibility=hidden)
+target_link_libraries(dragon_network PRIVATE android log dl)

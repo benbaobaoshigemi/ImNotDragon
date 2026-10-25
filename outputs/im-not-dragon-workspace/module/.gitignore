@@ -1,0 +1,20 @@
+# Gradle & Android build artifacts
+.gradle/
+.cxx/
+build/
+app/build/
+app/.cxx/
+local.properties
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Keystores & temporary logs
+*.jks
+*.keystore
+*.log
+*.pcap
